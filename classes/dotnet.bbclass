@@ -1,7 +1,5 @@
 inherit dotnet-environment 
 
-RDEPENDS_${PN}+=" libsystemnative" 
-
 BUILD="${WORKDIR}/build" 
 PACKAGES = "${PN}-dbg ${PN}" 
  
