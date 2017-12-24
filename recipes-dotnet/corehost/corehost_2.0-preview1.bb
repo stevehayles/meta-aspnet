@@ -1,4 +1,4 @@
-include preview1-revs.inc
+include 2.0-preview1-revs.inc
 include corehost.inc
 
 SRC_URI += "\

@@ -8,9 +8,9 @@ DEPENDS = "clang-native lldb libunwind gettext icu openssl util-linux cmake-nati
 RDEPENDS_${PN} = "libicuuc libicui18n lttng-ust"
 
 SRC_URI = "git://github.com/dotnet/coreclr.git;nobranch=1 \
-           file://toolchain.patch; \
-           file://0001-Allow-overriding-target-rid.patch \
-           "
+          file://toolchain.patch; \
+          file://0001-Allow-overriding-target-rid.patch \
+          "
 
 SRCREV = "${CORECLR_SRCREV}"
 LIC_FILES_CHKSUM = "file://LICENSE.TXT;md5=9fc642ff452b28d62ab19b7eea50dfb9"
@@ -27,7 +27,7 @@ addtask fix_target_name after do_patch before do_configure
 do_compile() {
 	cd ${S}
 	unset bindir
-	YOCTO_FORCE_RID=${CORE_RUNTIME_ID} ROOTFS_DIR=${STAGING_DIR_HOST} GCC_TOOLCHAIN=${STAGING_BINDIR_TOOLCHAIN} BuildNumberMajor=${CORECLR_BUILD_MAJOR} BuildNumberMinor=${CORECLR_BUILD_MINOR} ./build.sh ${TARGET_ARCH} release cross skiptests
+	YOCTO_FORCE_RID=${CORE_RUNTIME_ID} ROOTFS_DIR=${STAGING_DIR_HOST} GCC_TOOLCHAIN=${STAGING_BINDIR_TOOLCHAIN} BuildNumberMajor=${CORECLR_BUILD_MAJOR} BuildNumberMinor=${CORECLR_BUILD_MINOR} ./build.sh ${TARGET_ARCH} release cross skiptests cmakeargs "-j1"
 }
 
 do_install() {
