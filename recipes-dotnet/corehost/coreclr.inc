@@ -27,7 +27,7 @@ addtask fix_target_name after do_patch before do_configure
 do_compile() {
 	cd ${S}
 	unset bindir
-	YOCTO_FORCE_RID=${CORE_RUNTIME_ID} ROOTFS_DIR=${STAGING_DIR_HOST} GCC_TOOLCHAIN=${STAGING_BINDIR_TOOLCHAIN} BuildNumberMajor=${CORECLR_BUILD_MAJOR} BuildNumberMinor=${CORECLR_BUILD_MINOR} ./build.sh ${TARGET_ARCH} release cross skiptests cmakeargs "-j1"
+	YOCTO_FORCE_RID=${CORE_RUNTIME_ID} ROOTFS_DIR=${STAGING_DIR_HOST} GCC_TOOLCHAIN=${STAGING_BINDIR_TOOLCHAIN} BuildNumberMajor=${CORECLR_BUILD_MAJOR} BuildNumberMinor=${CORECLR_BUILD_MINOR} ./build.sh ${TARGET_ARCH} release cross skiptests
 }
 
 do_install() {
