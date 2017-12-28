@@ -6,12 +6,12 @@ SECTION = "devel"
 DEPENDS = "clang-native coreclr libunwind gettext icu openssl util-linux cmake-native krb5 curl ca-certificates-native"
 RDEPENDS_${PN} = "coreclr libcurl libuv"
 
-SRC_URI = "git://github.com/dotnet/corefx.git;nobranch=1 \
+SRC_URI = "git://github.com/stevehayles/corefx.git;branch=development \
     file://toolchain.patch; \
     file://0001-Avoid-declaring-the-sysroot-s-usr-include-as-system-.patch; \
 "
 
-SRCREV = "${COREFX_SRCREV}"
+SRCREV = "${AUTOREV}"
 S = "${WORKDIR}/git"
 
 # Install the stripped binaries, the unstripped are smaller and causes Bus error
