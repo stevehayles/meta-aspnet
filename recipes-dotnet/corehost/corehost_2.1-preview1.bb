@@ -19,7 +19,6 @@ do_compile() {
         -ConfigurationGroup=Release \
         -TargetArchitecture=${TARGET_ARCH} \
         -PortableBuild=true \
-        -DistroRid=${CORE_RUNTIME_ID} \
         -SkipTests=true \
         -DisableCrossgen=true \
         -CrossBuild=true
