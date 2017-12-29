@@ -31,12 +31,12 @@ do_install() {
 
 add_dotnet_symlink() {
     # create usr/local/bin if it doesn't exist
-    mkdir -p -m 775 ${D}/usr/local/bin
+    mkdir -p -m 775 ${IMAGE_ROOTFS}/usr/local/bin
     
-    # and then create symlink into path
-    ln -sf ${D}/opt/dotnet/dotnet ${D}/usr/local/bin
+    # and then create symlink into the path
+    ln -sf ${IMAGE_ROOTFS}/opt/dotnet/dotnet ${IMAGE_ROOTFS}/usr/local/bin
 }
 
-ROOTFS_POSTPROCESS_COMMAND += "add_dotnet_symlink;"
+# ROOTFS_POSTPROCESS_COMMAND += "add_dotnet_symlink; "
 
 
