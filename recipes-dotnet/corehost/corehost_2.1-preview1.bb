@@ -26,7 +26,17 @@ do_compile() {
 
 do_install() {
     install -d ${D}/opt/dotnet
-
     cp -dr ${S}/Bin/obj/${CORE_RUNTIME_ID}.Release/combined-framework-host/* ${D}/opt/dotnet/
 }
+
+add_dotnet_symlink() {
+    # create usr/local/bin if it doesn't exist
+    mkdir -p -m 775 ${D}/usr/local/bin
+    
+    # and then create symlink into path
+    ln -sf ${D}/opt/dotnet/dotnet ${D}/usr/local/bin
+}
+
+ROOTFS_POSTPROCESS_COMMAND += "add_dotnet_symlink;"
+
 
